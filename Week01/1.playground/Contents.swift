@@ -24,3 +24,4 @@ func generateStaircase(_ totalSteps: Int) {
 let totalSteps = 50
 // Generate and print the staircase
 generateStaircase(totalSteps)
+//file
