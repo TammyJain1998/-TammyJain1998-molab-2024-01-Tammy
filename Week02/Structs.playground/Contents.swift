@@ -141,3 +141,79 @@ struct Play {
 let play = Play(name: "Megan R")
 print(player.number)
 
+struct BankAccount {
+    private(set) var funds = 0
+    mutating func deposit(amount: Int) {
+        funds += amount
+    }
+    mutating func withdraw(amount: Int) -> Bool {
+        if funds >= amount {
+            funds -= amount
+            return true
+        } else {
+            return false
+        }
+    }
+}
+var account = BankAccount()
+account.deposit(amount: 100)
+let success = account.withdraw(amount: 200)
+
+if success {
+    print("Withdrew money successfully")
+} else {
+    print("Failed to get the money")
+}
+
+//Static properties and methods:
+struct School{
+    //static work says that the varaiable and the function belong to the struct school itself and not to individual instance of a school
+    static var studentCount = 0
+    static func add(student : String){
+        print("\(student) joined the school")
+        studentCount += 1
+    }
+}
+//now you dont need to add a new variable for school
+School.add(student : "Taylor")
+print(School.studentCount)
+
+//mix-match static and non-static.
+//it is not possible to use non-static properties from ststic struct
+//it is possible the other way around
+struct Employees {
+    let username: String
+    let password: String
+
+    static let example = Employees(username: "cfederighi", password: "hairforceone")
+}
+
+
+//CHECKPOINT 6
+struct Car{
+    let model : String
+    let seats : Int
+    var gear : Int
+    
+    mutating func changingGearUp(){
+        if gear < 10 {
+            gear += 1
+            print("Changed gear up to \(gear)")
+        } else{
+            print("Already in the highest gear.")
+        }
+    }
+    mutating func changingGearDown(){
+        if gear > 1 { // Assuming 1 is the minimum gear
+            gear -= 1
+            print("Changed gear down to \(gear)")
+        } else {
+            print("Already in the lowest gear.")
+        }
+    }
+}
+var car = Car(model: "Toyota Camry", seats: 5, gear: 1)
+print("Current gear: \(car.gear)")
+car.changingGearUp()
+car.changingGearUp()
+car.changingGearDown()
