@@ -91,6 +91,9 @@ class AudioDJ: ObservableObject {
     static let audioRef = [
         "Kehdoon Tumhe, Ya Chup Rahun  Kishore Kumar  Deewaar Romantic Song 4K.mp3",
         "Dekha Ek Khwab Song  Silsila  Amitabh Bachchan, Rekha  Kishore Kumar, Lata Mangeshkar, Shiv-Hari.mp3",
-        "Mere Samne Wali Khidki Mein - Padosan - Saira Banu, Sunil Dutt & Kishore Kumar - Old Hindi Songs.mp3"
+        "Mere Samne Wali Khidki Mein - Padosan - Saira Banu, Sunil Dutt & Kishore Kumar - Old Hindi Songs.mp3",
+        "Chura lia hai tumne...old hindi songs by copied.mp3",
+        "Tu Tu Hai Wahi   Love Song   Kishore Kumar  Asha Bhosle.mp3",
+        "Tere Jaisa Yaar Kahan  Kishore Kumar  Yaarana 1981 Songs  Amitabh Bachchan.mp3"
     ]
 }
