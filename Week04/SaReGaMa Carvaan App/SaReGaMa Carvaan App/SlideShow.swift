@@ -2,19 +2,26 @@ import SwiftUI
 
 struct SlideShowView: View {
     var song: Song
-    @State private var slideIndex = 0
+    @State private var slideIndex = 1
     @StateObject var audioDJ = AudioDJ() // Instantiate AudioDJ
+    @State private var playbackProgress: Double = 0 // For controlling playback progress
+    @State private var audioLength: Double = 1 // Initialize to ensure it's always positive
+    @State private var timer: Timer? = nil // Timer for tracking playback time
     
     var body: some View {
         VStack {
             Text(song.name)
                 .font(Font.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
-                .padding(.bottom, 20.0)
-                
+                .padding()
             
             SingleSlideView(song: song, slideIndex: $slideIndex)
                 .padding(.bottom, 20)
+            
+            // Slider to control playback progress
+            Slider(value: $playbackProgress, in: 0...max(audioLength, 1), step: 0.1, onEditingChanged: sliderEditingChanged)
+                .padding()
+                .accentColor(.white)
             
             HStack {
                 Button(action: previousItemAction) {
@@ -54,6 +61,15 @@ struct SlideShowView: View {
         }
         .onDisappear {
             audioDJ.stop() // Stop the audio when leaving the view
+            timer?.invalidate() // Invalidate the timer
+        }
+        .onReceive(audioDJ.$player) { player in
+            // Update audioLength when player is set
+            if let duration = player?.duration {
+                audioLength = duration
+                // Start timer for tracking playback time
+                startTrackingPlaybackTime()
+            }
         }
     }
     
@@ -68,7 +84,31 @@ struct SlideShowView: View {
             slideIndex += 1
         }
     }
+    
+    private func startTrackingPlaybackTime() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if let player = audioDJ.player, player.isPlaying {
+                playbackProgress = player.currentTime
+            } else {
+                timer?.invalidate()
+            }
+        }
+    }
+    
+    private func sliderEditingChanged(editingStarted: Bool) {
+        if !editingStarted {
+            if let player = audioDJ.player {
+                player.currentTime = playbackProgress
+                if audioDJ.isPlaying {
+                    player.play()
+                }
+            }
+        } else {
+            audioDJ.player?.pause()
+        }
+    }
 }
+
 
 struct SingleSlideView: View {
     var song: Song
@@ -81,6 +121,7 @@ struct SingleSlideView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 300, height: 300)
                 .cornerRadius(30)
+            
             Text(song.singerName)
                 .font(.subheadline)
                 .foregroundColor(Color.gray)

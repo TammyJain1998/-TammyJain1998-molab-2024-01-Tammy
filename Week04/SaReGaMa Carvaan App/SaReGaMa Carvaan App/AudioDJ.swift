@@ -1,10 +1,3 @@
-//
-//  AudioDJ.swift
-//  SaReGaMa Carvaan App
-//
-//  Created by Tamanna Jain on 2/25/24.
-//
-
 import AVFoundation
 
 class AudioDJ: ObservableObject {
@@ -25,7 +18,6 @@ class AudioDJ: ObservableObject {
         play() // Play the new audio
     }
 
-    
     func play() {
         player = loadAudio(soundFile)
         player?.currentTime = playbackPosition // Set playback position
