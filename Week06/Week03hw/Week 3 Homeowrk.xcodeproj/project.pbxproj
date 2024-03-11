@@ -36,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9473C00C2B9F83D1008846FD /* Week-3-Homeowrk-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Week-3-Homeowrk-Info.plist"; sourceTree = SOURCE_ROOT; };
 		94B25EA82B7A8C3E00E87617 /* Week 3 Homeowrk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Week 3 Homeowrk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B25EAB2B7A8C3E00E87617 /* Week_3_HomeowrkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week_3_HomeowrkApp.swift; sourceTree = "<group>"; };
 		94B25EAD2B7A8C3E00E87617 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,6 +100,7 @@
 		94B25EAA2B7A8C3E00E87617 /* Week 3 Homeowrk */ = {
 			isa = PBXGroup;
 			children = (
+				9473C00C2B9F83D1008846FD /* Week-3-Homeowrk-Info.plist */,
 				94B25EAB2B7A8C3E00E87617 /* Week_3_HomeowrkApp.swift */,
 				94B25ED82B7A8F9E00E87617 /* 1st Page.swift */,
 				94B25EAD2B7A8C3E00E87617 /* ContentView.swift */,
@@ -432,6 +434,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Week-3-Homeowrk-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -470,6 +473,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Week-3-Homeowrk-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
