@@ -10,13 +10,13 @@ struct SlideShowView: View {
     
     var body: some View {
         VStack {
+            SingleSlideView(song: song, slideIndex: $slideIndex)
+                .padding(.bottom, 20)
+            
             Text(song.name)
                 .font(Font.system(size: 30, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding()
-            
-            SingleSlideView(song: song, slideIndex: $slideIndex)
-                .padding(.bottom, 20)
             
             // Slider to control playback progress
             Slider(value: $playbackProgress, in: 0...max(audioLength, 1), step: 0.1, onEditingChanged: sliderEditingChanged)

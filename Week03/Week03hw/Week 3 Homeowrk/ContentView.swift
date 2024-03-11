@@ -20,9 +20,7 @@ struct ContentView: View {
                 generatedImage?
                     .resizable()
                     .frame(width: dim*2, height: dim*2.5)
-                
-                // VStack containing buttons
-                VStack {
+                HStack {
                     // Regenerate button
                     Button(action: {
                         self.generateImage()
@@ -31,7 +29,7 @@ struct ContentView: View {
                             .padding()
                             .foregroundColor(.black)
                             .background(Color.white.opacity(0.7))
-                            .cornerRadius(20)
+                            .cornerRadius(200)
                     }
                     .padding(.horizontal)
                     
@@ -44,7 +42,7 @@ struct ContentView: View {
                             .padding()
                             .foregroundColor(.black)
                             .background(Color.white.opacity(0.7))
-                            .cornerRadius(20)
+                            .cornerRadius(200)
                     }
                     .padding(.horizontal)
                 }
