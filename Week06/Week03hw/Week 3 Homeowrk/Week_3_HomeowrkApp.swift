@@ -25,7 +25,7 @@ struct Week_3_HomeowrkApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FirstView()
         }
         .modelContainer(sharedModelContainer)
     }
