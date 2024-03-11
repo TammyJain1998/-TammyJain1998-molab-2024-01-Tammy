@@ -29,7 +29,7 @@ struct ContentView: View {
                     HStack {
                         // Regenerate button
                         Button(action: {
-                            self.opacity = 0.7 // Fade out
+                            self.opacity = 0.8 // Fade out
                             self.generateImage()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 withAnimation {
