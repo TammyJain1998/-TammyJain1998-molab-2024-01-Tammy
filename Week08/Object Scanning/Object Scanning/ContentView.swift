@@ -1,20 +1,7 @@
-//
-//  First View.swift
-//  GuidedCapture
-//
-//  Created by Tamanna Jain on 3/24/24.
-//  Copyright © 2024 Apple. All rights reserved.
-//
-
 import SwiftUI
 
 struct FirstView: View {
     @State private var logoOpacity: Double = 0.0 // State variable to control opacity
-    @State private var shouldNavigate: Bool = false // State variable to control navigation
-    
-    // Create an instance of CaptureFolderManager
-    let captureFolderManager = CaptureFolderManager()
-
     var body: some View {
         NavigationView {
             ZStack {
@@ -29,7 +16,7 @@ struct FirstView: View {
                         )
                     )
                     .edgesIgnoringSafeArea(.all)
-                
+
                 VStack {
                     Image("LOGO")
                         .resizable()
@@ -41,21 +28,9 @@ struct FirstView: View {
                             withAnimation(.easeIn(duration: 2.0)) { // Add animation
                                 logoOpacity = 1.0 // Fade in the logo
                             }
-                            // Start timer to navigate after 5 seconds
-                            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
-                                shouldNavigate = true // Set the flag to trigger navigation
-                            }
                         }
                         .padding() // Add padding to VStack
                         .scaleEffect(logoOpacity > 0.0 ? 1.0 : 0.5) // Start from smaller size and ease into current size
-                }
-            }
-            .fullScreenCover(isPresented: $shouldNavigate) {
-                if let captureFolderManager = captureFolderManager {
-                    ModelFilesView(captureFolderManager: captureFolderManager)
-                } else {
-                    // Handle case where captureFolderManager is nil
-                    Text("Error: Capture folder manager not initialized")
                 }
             }
         }
