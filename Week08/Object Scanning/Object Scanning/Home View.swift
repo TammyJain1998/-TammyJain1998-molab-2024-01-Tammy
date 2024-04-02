@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let ochreColor = Color(red: 237/255, green: 181/255, blue: 37/255)
+    let ochreColor = Color(red: 229/255, green: 194/255, blue: 124/255)
     let darkGreyColor = Color(red: 68/255, green: 68/255, blue: 68/255)
     
     var body: some View {
