@@ -50,35 +50,42 @@ import SwiftUI
 struct ModelsListView: View {
     @Environment(\.colorScheme) var colorScheme // Access the current color scheme
     @State private var modelFiles: [URL] = []
-    @State private var captureFolderManager = CaptureFolderManager()! // Correctly instantiated, not optional
+    @State private var captureFolderManager = CaptureFolderManager()! // Assuming this cannot fail
 
     init(modelFiles: [URL] = []) {
         _modelFiles = State(initialValue: modelFiles)
     }
 
     var body: some View {
-        VStack {
-            HStack {
-                // Conditionally show image based on color scheme
-                if colorScheme == .dark {
-                    Image("LOGO2") // Displayed in dark mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                } else {
-                    Image("LOGO") // Displayed in light mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
+        NavigationView {
+            VStack(spacing: 0) { // Use `spacing: 0` to remove any default spacing between elements in VStack
+                // Logo at the top
+                HStack {
+                    if colorScheme == .dark {
+                        Image("LOGO2") // Displayed in dark mode
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 90)
+                            .padding(.vertical, 10)
+                    } else {
+                        Image("LOGO") // Displayed in light mode
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 120, height: 90)
+                            .padding(.vertical, 10)
+                    }
+
+                    Spacer()
                 }
                 
-                Spacer()
-            }
-            //.padding(.top, 16) // Adjust padding as needed
-        NavigationView {
+                // Custom title
+                Text("All Scans")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .padding(.vertical, 10) // Add some padding to space out the title
 
+                // List
                 List(modelFiles, id: \.self) { modelURL in
                     NavigationLink(destination: ModelView(modelFile: modelURL, endCaptureCallback: {
                         // Actions after viewing the model, if any.
@@ -98,10 +105,12 @@ struct ModelsListView: View {
                     }
                 }
             }
-            .navigationBarTitle("All Scans")
+            // Explicitly hide the default navigation bar to rely on the custom layout
+            .navigationBarHidden(true)
         }
     }
 }
+
 
 struct ModelsListView_Previews: PreviewProvider {
     static var previews: some View {
