@@ -56,14 +56,13 @@ struct ModelsListView: View {
 
     var body: some View {
         NavigationView {
-            List(modelFiles, id: \.self) { modelURL in
+             List(modelFiles, id: \.self) { modelURL in
                 NavigationLink(destination: ModelView(modelFile: modelURL, endCaptureCallback: {
                     // Actions after viewing the model, if any.
                 })) {
                     Text(modelURL.lastPathComponent)
                 }
             }
-            .padding(.top, 200.0)
             .onAppear {
                 Task {
                     do {
@@ -75,6 +74,8 @@ struct ModelsListView: View {
                     }
                 }
             }
+            Spacer()
+           
             .navigationBarTitle("USDZ Models")
         }
     }

@@ -143,15 +143,17 @@ extension CaptureOverlayView {
     struct FilesButton: View {
         @EnvironmentObject var appModel: AppDataModel
         @State private var showDocumentBrowser = false
+        @State private var isContentVisible = false
 
         var body: some View {
             Button(
                 action: {
-                    logger.log("Files button clicked!")
-                    showDocumentBrowser = true
+                    logger.log("Go Back to Home Page!")
+                    //showDocumentBrowser = true
+                    isContentVisible.toggle()
                 },
                 label: {
-                    Image(systemName: "folder")
+                    Image(systemName: "house")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 22)
@@ -162,6 +164,9 @@ extension CaptureOverlayView {
             .sheet(isPresented: $showDocumentBrowser,
                    onDismiss: { showDocumentBrowser = false },
                    content: { DocumentBrowser(startingDir: appModel.scanFolderManager.rootScanFolder) })
+            .fullScreenCover(isPresented: $isContentVisible) {
+                CombinedView()
+            }
         }
     }
 
