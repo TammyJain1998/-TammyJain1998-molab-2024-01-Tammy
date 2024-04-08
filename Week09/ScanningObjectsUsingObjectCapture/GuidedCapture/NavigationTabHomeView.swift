@@ -10,24 +10,6 @@ struct HomeButtonView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                // Conditionally show image based on color scheme
-                if colorScheme == .dark {
-                    Image("LOGO2") // Displayed in dark mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                } else {
-                    Image("LOGO") // Displayed in light mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                }
-                
-                Spacer()
-            }
             
             Spacer()
             
@@ -87,7 +69,7 @@ struct HomeButtonView: View {
                     }
                 }
             }
-            .padding(.top, 570.0)
+            .padding(.top, 750.0)
         }
     }
 }
