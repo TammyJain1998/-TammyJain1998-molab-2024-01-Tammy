@@ -13,12 +13,14 @@ import SwiftUI
 @main
 struct GuidedCaptureSampleApp: App {
     static let subsystem: String = "com.example.apple-samplecode.GuidedCapture"
+    @StateObject var userData = UserData()
     
     var body: some Scene {
-        WindowGroup {
-            if #available(iOS 17.0, *) {
-                FirstView()
-            }
-        }
-    }
-}
+         WindowGroup {
+             if #available(iOS 17.0, *) {
+                 FirstView()
+                     .environmentObject(userData)
+             }
+         }
+     }
+ }

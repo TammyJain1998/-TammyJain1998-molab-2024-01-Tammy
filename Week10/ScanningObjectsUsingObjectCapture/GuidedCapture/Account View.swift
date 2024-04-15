@@ -1,25 +1,31 @@
 import SwiftUI
 
 struct AccountView: View {
-     var name: String
-     var phoneNumber: String
+    @EnvironmentObject var userData: UserData  // Accessing the shared user data
     @State private var showingImagePicker: Bool = false
     @State private var inputImage: UIImage?
-    @State private var image: Image = Image(systemName: "person.circle.fill")  // Default image
 
     var body: some View {
         VStack {
             Spacer()
-            image
-                .resizable()
-                             .scaledToFill()
-                             .frame(width: 150, height: 150)
-                             .clipShape(Circle())
-                             .overlay(Circle().stroke(Color.gray, lineWidth: 1)) // Inner border
-                             .padding(10) // Creates space between the inner image and the outer circle
-                             .background(Circle().stroke(Color.gray, lineWidth: 3)) // Outer circle as a background with a border
-                             .padding(.bottom, 0)  // Space between the image and the text
-            Text(name)
+            Group {
+                if let imageData = userData.imageData, let uiImage = UIImage(data: imageData) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                } else {
+                    Image(systemName: "person.circle.fill")  // Default image
+                        .resizable()
+                }
+            }
+            .scaledToFill()
+            .frame(width: 150, height: 150)
+            .clipShape(Circle())
+            .overlay(Circle().stroke(Color.gray, lineWidth: 1)) // Inner border
+            .padding(10) // Creates space between the inner image and the outer circle
+            .background(Circle().stroke(Color.gray, lineWidth: 3)) // Outer circle as a background with a border
+            .padding(.bottom, 0)  // Space between the image and the text
+
+            Text("\(userData.name)")
                 .font(.title)
                 .fontWeight(.medium)
 
@@ -33,7 +39,7 @@ struct AccountView: View {
                 .fontWeight(.medium)
                 .padding(.top, 40)
             
-            Text(phoneNumber)
+            Text("\(userData.phoneNumber)")
                 .font(.title)
                 .foregroundColor(.gray)
             Spacer()
@@ -46,7 +52,9 @@ struct AccountView: View {
 
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        image = Image(uiImage: inputImage)
+        if let imageData = inputImage.jpegData(compressionQuality: 1.0) {
+            userData.imageData = imageData
+        }
     }
 }
 
@@ -80,11 +88,5 @@ struct ImagePicker: UIViewControllerRepresentable {
 
             parent.presentationMode.wrappedValue.dismiss()
         }
-    }
-}
-
-struct AccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        AccountView(name: "John Doe", phoneNumber: "+1234567890")
     }
 }

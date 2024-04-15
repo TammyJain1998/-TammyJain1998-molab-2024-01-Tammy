@@ -13,7 +13,7 @@ struct AccountViewwithNavigationBar: View {
     @State private var phoneNumber: String = ""
     var body: some View {
         ZStack(alignment: .bottom) {
-            AccountView(name: name, phoneNumber: phoneNumber)
+            AccountView()
             HomeButtonView2()
             // Depending on your layout, you might need to adjust the alignment or positioning
         }

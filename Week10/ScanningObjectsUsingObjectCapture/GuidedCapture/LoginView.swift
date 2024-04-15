@@ -1,16 +1,17 @@
 import SwiftUI
 
 struct LoginView: View {
+    @EnvironmentObject var userData: UserData  // Shared user data
     @State private var name: String = ""
     @State private var phoneNumber: String = ""
     @State private var isLoginSuccessful: Bool = false
     @State private var showNextView: Bool = false
     let ochreColor = Color(red: 229/255, green: 194/255, blue: 124/255)
-    let captureFolderManager = CaptureFolderManager()
+    let captureFolderManager = CaptureFolderManager() // Assuming CaptureFolderManager is defined elsewhere
     
     var body: some View {
         if showNextView {
-            CombinedView()
+            CombinedView() // Assuming CombinedView is the central view that might display the account details
         } else {
             VStack {
                 Spacer()
@@ -38,6 +39,8 @@ struct LoginView: View {
                 
                 Button("Login") {
                     // Simulate login success
+                    userData.name = name
+                    userData.phoneNumber = phoneNumber
                     isLoginSuccessful = true
                 }
                 .padding()
