@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		94AE24392BBB17050014A517 /* Home View Navigation Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE24382BBB17050014A517 /* Home View Navigation Part.swift */; };
 		94AE243B2BC363D60014A517 /* Main Scans View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE243A2BC363D60014A517 /* Main Scans View.swift */; };
+		94DC7F1E2BC6FFEB0078C30C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */; };
+		94DC7F242BCDA8020078C30C /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F232BCDA8020078C30C /* Account View.swift */; };
 		94FBCD6E2BAC9EFD00FD79F3 /* Object_ScanningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FBCD6D2BAC9EFD00FD79F3 /* Object_ScanningApp.swift */; };
 		94FBCD702BAC9EFD00FD79F3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FBCD6F2BAC9EFD00FD79F3 /* ContentView.swift */; };
 		94FBCD722BAC9EFD00FD79F3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FBCD712BAC9EFD00FD79F3 /* Item.swift */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		94AE24382BBB17050014A517 /* Home View Navigation Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View Navigation Part.swift"; sourceTree = "<group>"; };
 		94AE243A2BC363D60014A517 /* Main Scans View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main Scans View.swift"; sourceTree = "<group>"; };
+		94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		94DC7F232BCDA8020078C30C /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
 		94FBCD6A2BAC9EFD00FD79F3 /* Object Scanning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Object Scanning.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94FBCD6D2BAC9EFD00FD79F3 /* Object_ScanningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Object_ScanningApp.swift; sourceTree = "<group>"; };
 		94FBCD6F2BAC9EFD00FD79F3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +65,8 @@
 				94FBCD6F2BAC9EFD00FD79F3 /* ContentView.swift */,
 				94AE24382BBB17050014A517 /* Home View Navigation Part.swift */,
 				94AE243A2BC363D60014A517 /* Main Scans View.swift */,
+				94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */,
+				94DC7F232BCDA8020078C30C /* Account View.swift */,
 				94FBCD712BAC9EFD00FD79F3 /* Item.swift */,
 				94FBCD732BAC9EFF00FD79F3 /* Assets.xcassets */,
 				94FBCD752BAC9EFF00FD79F3 /* Preview Content */,
@@ -148,6 +154,8 @@
 			files = (
 				94FBCD702BAC9EFD00FD79F3 /* ContentView.swift in Sources */,
 				94FBCD722BAC9EFD00FD79F3 /* Item.swift in Sources */,
+				94DC7F1E2BC6FFEB0078C30C /* SwiftUIView.swift in Sources */,
+				94DC7F242BCDA8020078C30C /* Account View.swift in Sources */,
 				94AE24392BBB17050014A517 /* Home View Navigation Part.swift in Sources */,
 				94FBCD6E2BAC9EFD00FD79F3 /* Object_ScanningApp.swift in Sources */,
 				94AE243B2BC363D60014A517 /* Main Scans View.swift in Sources */,

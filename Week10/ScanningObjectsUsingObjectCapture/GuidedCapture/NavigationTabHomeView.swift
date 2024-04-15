@@ -1,31 +1,16 @@
 import SwiftUI
 
-struct ContentView: View {
+struct HomeButtonView: View {
     @Environment(\.colorScheme) var colorScheme // Access the current color scheme
     
     let ochreColor = Color(red: 229/255, green: 194/255, blue: 124/255)
     let darkGreyColor = Color(red: 68/255, green: 68/255, blue: 68/255, opacity: 1)
     
+    @State private var isContentVisible = false
+    @State private var isAccountVisible = false
+    
     var body: some View {
         VStack {
-            HStack {
-                // Conditionally show image based on color scheme
-                if colorScheme == .dark {
-                    Image("LOGO2") // Displayed in dark mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                } else {
-                    Image("LOGO") // Displayed in light mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                }
-                
-                Spacer()
-            }
             
             Spacer()
             
@@ -41,18 +26,22 @@ struct ContentView: View {
                     Circle()
                         .foregroundColor(darkGreyColor) // Adjust color as needed
                         .frame(width: 90, height: 90)
-                        .offset(x: 115, y: -15) // Adjust offset to position the circle
+                        .offset(x: 5, y: -15) // Adjust offset to position the circle
                     
                     HStack {
                         Spacer()
                         
                         Button(action: {
                             // Action for Camera
+                            isContentVisible.toggle()
                         }) {
                             Image(systemName: "camera.fill")
                                 .foregroundColor(ochreColor)
                                 .font(.system(size: 30)) // Adjust the font size
                                 .padding()
+                        }
+                        .fullScreenCover(isPresented: $isContentVisible) {
+                            ContentView()
                         }
                         
                         Spacer()
@@ -69,25 +58,30 @@ struct ContentView: View {
                         Spacer()
                         
                         Button(action: {
-                            // Action for Account
+                            isAccountVisible.toggle()
                         }) {
                             Image(systemName: "person.fill")
                                 .foregroundColor(ochreColor)
                                 .font(.system(size: 30)) // Adjust the font size
                                 .padding()
                         }
+                        .fullScreenCover(isPresented: $isAccountVisible) {
+                            AccountViewwithNavigationBar()
+                        }
                         
                         Spacer()
                     }
                 }
             }
-            .padding(.top, 570.0)
+            .padding(.top, 750.0)
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView { // Wrap in NavigationView for preview
+            HomeButtonView()
+        }
     }
 }

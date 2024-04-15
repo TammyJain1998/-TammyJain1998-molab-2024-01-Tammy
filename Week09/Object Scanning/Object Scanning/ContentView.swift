@@ -21,7 +21,7 @@ struct FirstView: View {
                     Image("LOGO")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 120)
+                        .frame(width: 70)
                         .opacity(logoOpacity) // Apply opacity based on state
                     
                         .onAppear { // Triggered when the view appears

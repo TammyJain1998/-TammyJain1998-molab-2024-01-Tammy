@@ -50,6 +50,9 @@
 		94AE243F2BC367A20014A517 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE243E2BC367A20014A517 /* HomePage.swift */; };
 		94DC7F202BCC77540078C30C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F1F2BCC77540078C30C /* LoginView.swift */; };
 		94DC7F222BCC81B10078C30C /* Rename View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F212BCC81B10078C30C /* Rename View.swift */; };
+		94DC7F262BCDB02D0078C30C /* Account View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F252BCDB02D0078C30C /* Account View.swift */; };
+		94DC7F282BCDB18E0078C30C /* AccountViewwithNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F272BCDB18E0078C30C /* AccountViewwithNavigationBar.swift */; };
+		94DC7F2A2BCDB2800078C30C /* Navigation for Accounts View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F292BCDB2800078C30C /* Navigation for Accounts View.swift */; };
 		EB20D5602A40331F00992055 /* AppDataModel+Orbit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20D55F2A40331F00992055 /* AppDataModel+Orbit.swift */; };
 		EB20D5622A40341C00992055 /* AppDataModel+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20D5612A40341C00992055 /* AppDataModel+State.swift */; };
 		EB20D5652A40363D00992055 /* CaptureOverlayView+Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB20D5642A40363D00992055 /* CaptureOverlayView+Buttons.swift */; };
@@ -103,6 +106,9 @@
 		94AE243E2BC367A20014A517 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		94DC7F1F2BCC77540078C30C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		94DC7F212BCC81B10078C30C /* Rename View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rename View.swift"; sourceTree = "<group>"; };
+		94DC7F252BCDB02D0078C30C /* Account View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account View.swift"; sourceTree = "<group>"; };
+		94DC7F272BCDB18E0078C30C /* AccountViewwithNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewwithNavigationBar.swift; sourceTree = "<group>"; };
+		94DC7F292BCDB2800078C30C /* Navigation for Accounts View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Navigation for Accounts View.swift"; sourceTree = "<group>"; };
 		B63694814766022DF0079B53 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
 		EB20D55F2A40331F00992055 /* AppDataModel+Orbit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDataModel+Orbit.swift"; sourceTree = "<group>"; };
 		EB20D5612A40341C00992055 /* AppDataModel+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDataModel+State.swift"; sourceTree = "<group>"; };
@@ -158,9 +164,12 @@
 				9428274B2BB0C42A00344255 /* First View.swift */,
 				94DC7F1F2BCC77540078C30C /* LoginView.swift */,
 				94AE243E2BC367A20014A517 /* HomePage.swift */,
+				94DC7F272BCDB18E0078C30C /* AccountViewwithNavigationBar.swift */,
+				70D2F7062A339E4A00EFA0D8 /* ContentView.swift */,
+				94DC7F292BCDB2800078C30C /* Navigation for Accounts View.swift */,
+				94DC7F252BCDB02D0078C30C /* Account View.swift */,
 				94AE24362BBB12230014A517 /* ListHomePage.swift */,
 				94AE243C2BC366D10014A517 /* NavigationTabHomeView.swift */,
-				70D2F7062A339E4A00EFA0D8 /* ContentView.swift */,
 				9428274F2BB0C5EE00344255 /* Item.swift */,
 				70D2F70E2A339E4A00EFA0D8 /* AppDataModel.swift */,
 				EB20D55F2A40331F00992055 /* AppDataModel+Orbit.swift */,
@@ -315,6 +324,7 @@
 				70D2F71C2A339E4A00EFA0D8 /* CaptureFolderManager.swift in Sources */,
 				94AE243D2BC366D10014A517 /* NavigationTabHomeView.swift in Sources */,
 				94DC7F222BCC81B10078C30C /* Rename View.swift in Sources */,
+				94DC7F282BCDB18E0078C30C /* AccountViewwithNavigationBar.swift in Sources */,
 				70D2F7292A339E4A00EFA0D8 /* PlayerView.swift in Sources */,
 				70D2F7222A339E4A00EFA0D8 /* OnboardingButtonView+LocalizedString.swift in Sources */,
 				70D2F7202A339E4A00EFA0D8 /* TimedMessageList.swift in Sources */,
@@ -333,10 +343,12 @@
 				70D2F7142A339E4A00EFA0D8 /* CaptureOverlayView.swift in Sources */,
 				70D2F7272A339E4A00EFA0D8 /* OnboardingButtonView.swift in Sources */,
 				70D2F7212A339E4A00EFA0D8 /* UntilProcessingCompleteFilter.swift in Sources */,
+				94DC7F262BCDB02D0078C30C /* Account View.swift in Sources */,
 				70D2F72A2A339E4A00EFA0D8 /* CapturePrimaryView.swift in Sources */,
 				70D2F7182A339E4A00EFA0D8 /* ModelView.swift in Sources */,
 				70D2F7232A339E4A00EFA0D8 /* OnboardingView.swift in Sources */,
 				70D2F7262A339E4A00EFA0D8 /* FeedbackView.swift in Sources */,
+				94DC7F2A2BCDB2800078C30C /* Navigation for Accounts View.swift in Sources */,
 				70D2F71E2A339E4A00EFA0D8 /* FeedbackMessages.swift in Sources */,
 				70D2F7252A339E4A00EFA0D8 /* AppDataModel.swift in Sources */,
 				70D2F71B2A339E4A00EFA0D8 /* ShotFileInfo.swift in Sources */,

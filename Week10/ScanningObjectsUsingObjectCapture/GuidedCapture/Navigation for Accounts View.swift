@@ -1,31 +1,16 @@
 import SwiftUI
 
-struct ContentView: View {
+struct HomeButtonView2: View {
     @Environment(\.colorScheme) var colorScheme // Access the current color scheme
     
     let ochreColor = Color(red: 229/255, green: 194/255, blue: 124/255)
     let darkGreyColor = Color(red: 68/255, green: 68/255, blue: 68/255, opacity: 1)
     
+    @State private var isContentVisible = false
+    @State private var ishomeVisible = false
+    
     var body: some View {
         VStack {
-            HStack {
-                // Conditionally show image based on color scheme
-                if colorScheme == .dark {
-                    Image("LOGO2") // Displayed in dark mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                } else {
-                    Image("LOGO") // Displayed in light mode
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 120, height: 90)
-                        .padding(.vertical, 50.0)
-                }
-                
-                Spacer()
-            }
             
             Spacer()
             
@@ -48,22 +33,30 @@ struct ContentView: View {
                         
                         Button(action: {
                             // Action for Camera
+                            isContentVisible.toggle()
                         }) {
                             Image(systemName: "camera.fill")
                                 .foregroundColor(ochreColor)
                                 .font(.system(size: 30)) // Adjust the font size
                                 .padding()
                         }
+                        .fullScreenCover(isPresented: $isContentVisible) {
+                            ContentView()
+                        }
                         
                         Spacer()
                         
                         Button(action: {
                             // Action for Home
+                            ishomeVisible.toggle()
                         }) {
                             Image(systemName: "house.fill")
                                 .foregroundColor(ochreColor)
                                 .font(.system(size: 30)) // Adjust the font size
                                 .padding()
+                        }
+                        .fullScreenCover(isPresented: $ishomeVisible) {
+                            CombinedView()
                         }
                         
                         Spacer()
@@ -81,13 +74,15 @@ struct ContentView: View {
                     }
                 }
             }
-            .padding(.top, 570.0)
+            .padding(.top, 750.0)
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HomeButtonView2_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationView { // Wrap in NavigationView for preview
+            HomeButtonView2()
+        }
     }
 }
