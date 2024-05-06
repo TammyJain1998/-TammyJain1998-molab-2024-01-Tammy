@@ -20,6 +20,9 @@ struct GuidedCaptureSampleApp: App {
              if #available(iOS 17.0, *) {
                  FirstView()
                      .environmentObject(userData)
+                     .onAppear {
+                         DataManager.loadUserData(userData: userData)
+                     }
              }
          }
      }

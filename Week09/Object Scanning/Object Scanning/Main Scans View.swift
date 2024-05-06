@@ -7,24 +7,30 @@ struct ContentsView: View {
         MyListItem(name: "Item 2", imageName: "Image"),
         MyListItem(name: "Item 3", imageName: "Image")
     ]
-
+    
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(items) { item in
-                    VStack {
-                        Image(item.imageName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 150, height: 150)
-                            .cornerRadius(5)
-
-                        Text(item.name)
-                            .font(.headline)  // Adjust font style as needed.
-                            .padding(.top, 8)  // Adds space between the image and the text.
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
+                HStack{
+                    Text("All Scan")
+                        .font(.title)  // Makes the font larger and more prominent
+                        .padding(.leading, 10)  // Adds space between the text and the grid
+                    Spacer()
+                }
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                    ForEach(items) { item in
+                        VStack {
+                            Image(item.imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 190, height: 190)
+                                .cornerRadius(5)
+                            
+                            Text(item.name)
+                                .font(.headline)  // Adjust font style as needed.
+                        }
+                        .padding(.horizontal, 10)  // Adds horizontal space between items.
                     }
-                    .padding(.vertical, 10)  // Adds space above and below each item.
-                    .padding(.horizontal, 10)  // Adds horizontal space between items.
                 }
             }
         }

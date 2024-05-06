@@ -72,6 +72,8 @@ struct LoginView: View {
             // Reset image data if details don't match
             userData.imageData = nil
             isLoginSuccessful = true
+            
+            DataManager.saveUserData(userData: userData)  // Save data after successful login
         }
     }
 }

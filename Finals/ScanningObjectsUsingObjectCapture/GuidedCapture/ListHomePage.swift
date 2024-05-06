@@ -124,7 +124,6 @@ struct ModelsListView: View {
     @State private var fileToRename: URL?
     @State private var showingImagePicker: Bool = false
     @State private var inputImage: UIImage?
-    @State private var image: Image = Image("LOGIN")  // Default image when no photo has been selected yet
     @State private var selectedImageIndex: Int? // To keep track of which image is being replaced
     
     var body: some View {
@@ -160,36 +159,39 @@ struct ModelsListView: View {
                 }
                 
                 // List with clickable images for updating
-                List {
-                    ForEach(modelFiles.indices, id: \.self) { index in
-                        HStack {
-                            Image(uiImage: self.inputImage ?? UIImage(named: "LOGIN")!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 60, height: 60)
-                                .cornerRadius(5)
-                                .clipped()
-                                .onTapGesture {
-                                    self.selectedImageIndex = index
-                                    self.showingImagePicker = true
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                        ForEach(modelFiles.indices, id: \.self) { index in
+                            VStack {
+                                Image(uiImage: loadImage(for: modelFiles[index]))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 190, height: 190)
+                                    .cornerRadius(5)
+                                    .clipped()
+                                    .onTapGesture {
+                                        self.selectedImageIndex = index
+                                        self.showingImagePicker = true
+                                    }
+                                
+                                NavigationLink(destination: ModelView(modelFile: modelFiles[index], endCaptureCallback: { })) {
+                                    Text(modelFiles[index].lastPathComponent)
+                                        .foregroundColor(.white)
                                 }
-                            
-                            NavigationLink(destination: ModelView(modelFile: modelFiles[index], endCaptureCallback: { })) {
-                                Text(modelFiles[index].lastPathComponent)
                             }
-                        }
-                        .contextMenu {
-                            Button("Rename") {
-                                fileToRename = modelFiles[index]
-                                newName = modelFiles[index].lastPathComponent
-                                showRenameAlert = true
-                            }
-                            Button("Delete") {
-                                deleteItems(at: IndexSet(integer: index))
+                            .contextMenu {
+                                Button("Rename") {
+                                    fileToRename = modelFiles[index]
+                                    newName = modelFiles[index].lastPathComponent
+                                    showRenameAlert = true
+                                }
+                                Button("Delete") {
+                                    deleteItems(at: IndexSet(integer: index))
+                                }
                             }
                         }
                     }
-                    .onDelete(perform: deleteItems)
+                    .padding()
                 }
             }
             .alert("Rename File", isPresented: $showRenameAlert) {
@@ -198,13 +200,14 @@ struct ModelsListView: View {
             } message: {
                 Text("Please enter a new name for the file.")
             }
-            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            .sheet(isPresented: $showingImagePicker, onDismiss: saveImage) {
                 ImagePicker2(image: $inputImage)
             }
             .navigationBarHidden(true)
             .onAppear(perform: loadModelFiles)
         }
     }
+    
     
     private func loadModelFiles() {
         Task {
@@ -216,19 +219,27 @@ struct ModelsListView: View {
         }
     }
     
-    private func loadImage() {
-        guard let selectedImageIndex = selectedImageIndex,
-              let inputImage = inputImage else { return }
-
-        let imageData = inputImage.jpegData(compressionQuality: 1.0)
+    private func loadImage(for modelFile: URL) -> UIImage {
+        if let customImageURL = captureFolderManager.loadCustomImage(for: modelFile),
+           let imageData = try? Data(contentsOf: customImageURL) {
+            return UIImage(data: imageData) ?? UIImage(named: "LOGIN")!
+        } else {
+            return UIImage(named: "LOGIN")!
+        }
+    }
+    
+    private func saveImage() {
+        guard let selectedImageIndex = selectedImageIndex, let inputImage = inputImage else { return }
+        let modelFile = modelFiles[selectedImageIndex]
+        guard let imageData = inputImage.jpegData(compressionQuality: 1.0) else { return }
+        
         do {
-            try captureFolderManager.saveCustomImage(imageData!, for: modelFiles[selectedImageIndex])
-            modelFiles[selectedImageIndex] = captureFolderManager.customImageURL(for: modelFiles[selectedImageIndex])
+            try captureFolderManager.saveCustomImage(imageData, for: modelFile)
+            modelFiles[selectedImageIndex] = captureFolderManager.customImageURL(for: modelFile)
         } catch {
             print("Failed to save the image for the model: \(error.localizedDescription)")
         }
     }
-
 
     private func renameFile() {
         guard let fileToRename = fileToRename, !newName.isEmpty else { return }

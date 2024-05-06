@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94922DCA2BD709C40058BDB8 /* all scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94922DC92BD709C40058BDB8 /* all scan.swift */; };
 		94AE24392BBB17050014A517 /* Home View Navigation Part.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE24382BBB17050014A517 /* Home View Navigation Part.swift */; };
 		94AE243B2BC363D60014A517 /* Main Scans View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94AE243A2BC363D60014A517 /* Main Scans View.swift */; };
 		94DC7F1E2BC6FFEB0078C30C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		94922DC92BD709C40058BDB8 /* all scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "all scan.swift"; sourceTree = "<group>"; };
 		94AE24382BBB17050014A517 /* Home View Navigation Part.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home View Navigation Part.swift"; sourceTree = "<group>"; };
 		94AE243A2BC363D60014A517 /* Main Scans View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main Scans View.swift"; sourceTree = "<group>"; };
 		94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				94FBCD6F2BAC9EFD00FD79F3 /* ContentView.swift */,
 				94AE24382BBB17050014A517 /* Home View Navigation Part.swift */,
 				94AE243A2BC363D60014A517 /* Main Scans View.swift */,
+				94922DC92BD709C40058BDB8 /* all scan.swift */,
 				94DC7F1D2BC6FFEB0078C30C /* SwiftUIView.swift */,
 				94DC7F232BCDA8020078C30C /* Account View.swift */,
 				94FBCD712BAC9EFD00FD79F3 /* Item.swift */,
@@ -159,6 +162,7 @@
 				94AE24392BBB17050014A517 /* Home View Navigation Part.swift in Sources */,
 				94FBCD6E2BAC9EFD00FD79F3 /* Object_ScanningApp.swift in Sources */,
 				94AE243B2BC363D60014A517 /* Main Scans View.swift in Sources */,
+				94922DCA2BD709C40058BDB8 /* all scan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

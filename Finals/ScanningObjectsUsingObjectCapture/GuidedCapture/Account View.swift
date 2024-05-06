@@ -54,6 +54,7 @@ struct AccountView: View {
         guard let inputImage = inputImage else { return }
         if let imageData = inputImage.jpegData(compressionQuality: 1.0) {
             userData.imageData = imageData
+            DataManager.saveUserData(userData: userData)  // Correctly reference DataManager
         }
     }
 }
