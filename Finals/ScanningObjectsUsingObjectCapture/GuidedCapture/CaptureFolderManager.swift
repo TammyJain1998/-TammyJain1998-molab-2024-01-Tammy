@@ -142,15 +142,21 @@ class CaptureFolderManager: ObservableObject {
         }
     
     func saveCustomImage(_ imageData: Data, for modelFile: URL) throws {
-           let customImageURL = self.customImageURL(for: modelFile)
-           try imageData.write(to: customImageURL)
-           logger.log("Custom image saved for model \(modelFile.lastPathComponent)")
-       }
+        let customImageURL = self.customImageURL(for: modelFile)
+        try imageData.write(to: customImageURL)
+        print("Custom image saved successfully at \(customImageURL.path)")
+    }
 
-       func loadCustomImage(for modelFile: URL) -> URL? {
-           let customImageURL = self.customImageURL(for: modelFile)
-           return FileManager.default.fileExists(atPath: customImageURL.path) ? customImageURL : nil
-       }
+    func loadCustomImage(for modelFile: URL) -> URL? {
+        let customImageURL = self.customImageURL(for: modelFile)
+        if FileManager.default.fileExists(atPath: customImageURL.path) {
+            logger.log("Custom image exists at \(customImageURL.path)")
+            return customImageURL
+        } else {
+            logger.error("No custom image found at \(customImageURL.path)")
+            return nil
+        }
+    }
 
     func customImageURL(for modelFile: URL) -> URL {
         let imageName = modelFile.deletingPathExtension().lastPathComponent + "_custom.jpg"

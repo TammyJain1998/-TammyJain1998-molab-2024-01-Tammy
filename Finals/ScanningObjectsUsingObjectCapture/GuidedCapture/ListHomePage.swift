@@ -177,6 +177,7 @@ struct ModelsListView: View {
                                 NavigationLink(destination: ModelView(modelFile: modelFiles[index], endCaptureCallback: { })) {
                                     Text(modelFiles[index].lastPathComponent)
                                         .foregroundColor(.white)
+                                        .bold()
                                 }
                             }
                             .contextMenu {
@@ -204,10 +205,18 @@ struct ModelsListView: View {
                 ImagePicker2(image: $inputImage)
             }
             .navigationBarHidden(true)
-            .onAppear(perform: loadModelFiles)
+            .onAppear{
+                self.loadModelFiles()
+                self.forceRefresh()  // Force the view to update
+            }
         }
     }
     
+    private func forceRefresh() {
+        withAnimation {
+            modelFiles = modelFiles.map { URL(fileURLWithPath: $0.path) }
+        }
+    }
     
     private func loadModelFiles() {
         Task {
@@ -220,10 +229,13 @@ struct ModelsListView: View {
     }
     
     private func loadImage(for modelFile: URL) -> UIImage {
-        if let customImageURL = captureFolderManager.loadCustomImage(for: modelFile),
+        let customImageURL = captureFolderManager.customImageURL(for: modelFile)
+        if FileManager.default.fileExists(atPath: customImageURL.path),
            let imageData = try? Data(contentsOf: customImageURL) {
+            print("Custom image loaded successfully for \(modelFile.lastPathComponent)")
             return UIImage(data: imageData) ?? UIImage(named: "LOGIN")!
         } else {
+            print("No custom image found at \(customImageURL.path), falling back to default image for \(modelFile.lastPathComponent)")
             return UIImage(named: "LOGIN")!
         }
     }
@@ -236,6 +248,9 @@ struct ModelsListView: View {
         do {
             try captureFolderManager.saveCustomImage(imageData, for: modelFile)
             modelFiles[selectedImageIndex] = captureFolderManager.customImageURL(for: modelFile)
+            DispatchQueue.main.async {
+                self.loadModelFiles() // Reload all model files to refresh the view
+            }
         } catch {
             print("Failed to save the image for the model: \(error.localizedDescription)")
         }
