@@ -166,8 +166,8 @@ struct ModelsListView: View {
                                 Image(uiImage: loadImage(for: modelFiles[index]))
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                                    .frame(width: 190, height: 190)
-                                    .cornerRadius(5)
+                                    .frame(width: 170, height: 170)
+                                    .cornerRadius(7)
                                     .clipped()
                                     .onTapGesture {
                                         self.selectedImageIndex = index
